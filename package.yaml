@@ -1,0 +1,52 @@
+name:                pass-meter
+version:             0.1.0.0
+github:              "qoelet/pass-meter"
+license:             BSD3
+author:              "Kenny Shen"
+maintainer:          "kenny@machinesung.com"
+copyright:           "2018 Kenny Shen"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/qoelet/pass-meter#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+  - AhoCorasick
+  - containers
+  - safe
+  - text
+
+library:
+  source-dirs: src
+
+executables:
+  pass-meter:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - pass-meter
+
+tests:
+  pass-meter-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - pass-meter
+      - hspec
